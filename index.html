@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Web Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href ="./styles.css">
+    <script src="script.js"></script>
+    <link rel="icon" type ="image/png" href="./imgs/css.png">
+</head>
+<body>
+    <header>
+        <a href="https://www.linkedin.com/in/chizo-anyalechi-48aa19312/" class ="logo-holder">
+            <div class ="logo">CA</div>
+            <div class="logo-text">Chizorom Anyalechi</div>
+             
+        </a>
+        <nav>
+            <ul id="menu">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                 <li>
+                    <a href="#">Skills</a>
+                </li>
+                 <li>
+                    <a href="#projects">Projects</a>
+                </li>
+                 <li>
+                    <a href="mailto:canyalec@uoguelph.ca" class ="button">Contact Me</a>
+                </li>
+            </ul>
+            <a href="#" class="mobile-toggle" onClick="toggleMobileMenu();">
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h10"/>
+                </svg>
+
+                
+            </a>
+
+        </nav>
+    </header>
+    <main>
+        <section class="hero container"> 
+            <div class ="hero-blue">
+                <div>
+                    <h1><small> Hi I'm</small>
+                        Chizorom Anyalechi-Bachelor of Computer Engineering at University of Guelph
+                    </h1>
+                    <p>
+                      I am a Computer Engineering student with a strong passion for problem-solving and building innovative solutions in software technologies and robotics. 
+                      I enjoy tackling complex engineering challenges and applying my experience to develop efficient, reliable, and scalable systems. 
+                      In my free time, I focus on designing and creating technologies that make everyday tasks easier and provide meaningful value for others.
+                      <span>My main interests are robotics, software and computer systems.</span>
+                    </p>
+                    <div class ="call-to-action">
+                        <a href="./resume/Chizorom_Anyalechi_H.pdf"
+                            class="button black"
+                            target="_blank">
+                            View Resume
+                            </a>
+
+                        <a href="mailto:canyalec@uoguelph.ca" class="button white">
+                            Contact Me
+                            </a>
+
+                        
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/ChizoromAnyalechi" target="_blank" rel="noopener">
+                            <img src="./imgs/github.png" alt="GitHub" width="48">
+                        </a>
+                        <a href="https://www.linkedin.com/in/chizo-anyalechi-48aa19312/" target="_blank" rel="noopener">
+                            <img src="./imgs/linkedin.png" alt="LinkedIn" width="48">
+                        </a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class ="hero-yellow">
+                <img src="./imgs/ChizoromAnyalechi.jpg"
+                alt="Chizo"width="100%">
+            </div>
+
+        </section>
+        <section class="logos container">
+            <div class="marquee">
+                <div class ="track">
+                    <img src="./imgs/html.png"
+                    alt="HTML" width="128">
+                    <img src="./imgs/css.png"
+                    alt="CSS" width="128">
+                    <img src="./imgs/javascript.png"
+                    alt="JavaScript" width="128">
+                    <img src="./imgs/vscode.png"
+                    alt="VSCode" width="128">
+                    <img src="./imgs/Java-Logo.png"
+                    alt="Java" width="128">
+                    <img src="./imgs/VHDL.png"
+                    alt="VHDL" width="128">
+                    <img src="./imgs/C++.png"
+                    alt="C++" width="128">
+                    <img src="./imgs/C.png"
+                    alt="C" width="128">
+                </div>
+
+            </div>
+        </section>
+        <section id="skills" class="skills container">
+
+            <h2>
+                <small>About me</small>
+                Skills
+            </h2>
+            <div class="holder-blue">
+                <div class="left-column">
+                    <h3>Frontend</h3>
+                    <ul>
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>React</li> 
+                    </ul>
+                    <h3>Backend</h3>
+                    <ul>
+                        <li>C++</li>
+                        <li>Python</li>
+                        <li>Java</li>
+                    </ul>
+                    <h3>Hardware</h3>
+                    <ul>
+                        <li>Arduino</li>
+                        <li>VHDL</li>
+                        <li>C++</li>
+                    </ul>
+
+
+                </div>
+                <div class="right-column">
+                    <h3>A bit about me</h3>
+                    <p>Hi, I'm Chizorom Anyalechi, a Computer Engineering student with a strong interest in building 
+                        and understanding intelligent systems through practical engineering and software development. 
+                        I enjoy analyzing complex problems, thinking through how systems work, and turning ideas into 
+                        functional, real-world solutions using code and technology.</p>
+                        <p>
+                        I am deeply passionate about robotics and artificial intelligence, especially how they 
+                        can be applied to automate tasks, enhance efficiency, and 
+                        improve everyday life. I’m driven by the idea of using smart 
+                        systems and adaptive technologies to solve real 
+                        human problems and make technology more accessible, reliable, and impactful.
+                        </p>
+
+                </div>
+            </div>
+
+        </section>
+        <section id="projects" class="project-experience-container">
+        <h2>
+            <small>Recent</small>
+            Projects
+        </h2>
+
+        <div class="bento-grid">
+
+    <!-- Map App -->
+    <div class="project-card">
+      <img src="imgs/MapApp.png" alt="Interactive Maps Application">
+      <div class="project-overlay">
+        <h3>Interactive Maps Application</h3>
+        <ul>
+          <li>Designed a user-centered maps interface for navigating Guelph.</li>
+          <li>Built a responsive front-end with intuitive navigation flow.</li>
+          <li>Implemented dynamic destination display and route selection.</li>
+          <li>Improved usability and reduced task steps by ~50%.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Autonomous Wheelchair -->
+    <div class="project-card">
+      <img src="imgs/TBWC.JPG" alt="Autonomous Wheelchair">
+      <div class="project-overlay">
+        <h3>Autonomous Wheelchair</h3>
+        <ul>
+          <li>Designed an autonomous wheelchair with obstacle detection.</li>
+          <li>Modeled mechanical system using AutoCAD.</li>
+          <li>Integrated sensors and control logic for navigation.</li>
+          <li>Optimized stability and achieved successful prototype build.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+        </section>
+         
+        <section class="work-experience container">
+  <h2>Work Experience</h2>
+
+  <div class="work-card">
+    <img src="imgs/Heartland.jpg" alt="Heartland Church Summer Camp">
+
+    <div class="work-content">
+      <h3>Summer Camp Activity Coordinator</h3>
+      <p class="work-meta">
+        Heartland Church Connected · Mississauga, ON<br>
+        <span>Summer 2023</span>
+      </p>
+
+      <ul>
+        <li>Supervised and coordinated daily activities for 50+ children in a team-based environment.</li>
+        <li>Planned schedules, organized materials, and led group activities to ensure smooth program flow.</li>
+        <li>Maintained clear communication with staff and participants in a fast-paced setting.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+
+            
+    </main>
+</body>
+</html> 
