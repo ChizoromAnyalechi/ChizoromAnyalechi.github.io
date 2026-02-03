@@ -668,6 +668,15 @@ nav a:hover {
 	display: block;
 }
 
+.hover-instruction {
+	text-align: center;
+	font-size: 0.9rem;
+	color: var(--base);
+	font-style: italic;
+	margin-bottom: var(--spacing-md);
+	opacity: 0.8;
+}
+
 .bento-grid {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
@@ -757,6 +766,10 @@ nav a:hover {
 @media (max-width: 768px) {
 	.project-experience-container {
 		padding: var(--spacing-lg) var(--spacing-sm);
+	}
+	
+	.hover-instruction {
+		font-size: 0.85rem;
 	}
 	
 	.project-card {
