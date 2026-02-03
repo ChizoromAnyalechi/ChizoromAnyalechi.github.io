@@ -251,6 +251,8 @@ nav a:hover {
 @media (max-width: 768px) {
 	header {
 		padding: var(--spacing-sm);
+		justify-content: center;
+		flex-wrap: wrap;
 	}
 	
 	.logo-holder {
@@ -273,6 +275,8 @@ nav a:hover {
 	nav {
 		width: 100%;
 		order: 3;
+		display: flex;
+		justify-content: center;
 	}
 	
 	nav ul {
@@ -295,6 +299,7 @@ nav a:hover {
 	nav li {
 		display: block;
 		border-bottom: 1px solid var(--base-100);
+		text-align: center;
 	}
 	
 	nav li:last-child {
@@ -305,6 +310,7 @@ nav a:hover {
 		width: 100%;
 		padding: var(--spacing-md);
 		text-align: center;
+		display: block;
 	}
 }
 
