@@ -53,12 +53,12 @@ body {
 	overflow-x: hidden;
 	background: linear-gradient(
 		to bottom,
-		#e3f2fd 0%,
-		#bbdefb 20%,
-		#90caf9 40%,
-		#fff9c4 60%,
-		#fff59d 80%,
-		#f0f4c3 100%
+		#f5f7fa 0%,
+		#e8eef5 20%,
+		#dce4ed 40%,
+		#c9d6e8 60%,
+		#b8c5d9 80%,
+		#a8b5c9 100%
 	);
 	background-attachment: fixed;
 	min-height: 100vh;
@@ -79,14 +79,14 @@ body::before {
 	height: 100%;
 	background: linear-gradient(
 		to bottom,
-		#e3f2fd 0%,
-		#bbdefb 15%,
-		#90caf9 30%,
-		#64b5f6 45%,
-		#fff9c4 60%,
-		#fff59d 75%,
-		#fff176 90%,
-		#f0f4c3 100%
+		#f5f7fa 0%,
+		#e8eef5 15%,
+		#dce4ed 30%,
+		#d0dae6 45%,
+		#c9d6e8 60%,
+		#b8c5d9 75%,
+		#a8b5c9 90%,
+		#9aa7ba 100%
 	);
 	z-index: -1;
 	opacity: 0.8;
