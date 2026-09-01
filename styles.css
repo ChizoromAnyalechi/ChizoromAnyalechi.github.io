@@ -684,12 +684,6 @@ nav a:hover {
 	align-items: stretch;
 }
 
-.bento-grid .project-card:nth-child(3) {
-	grid-column: 1 / -1;
-	max-width: 600px;
-	margin: 0 auto;
-}
-
 .project-card {
 	position: relative;
 	border-radius: var(--radius-lg);
@@ -755,11 +749,6 @@ nav a:hover {
 	.bento-grid {
 		grid-template-columns: 1fr;
 		gap: var(--spacing-md);
-	}
-	
-	.bento-grid .project-card:nth-child(3) {
-		grid-column: auto;
-		max-width: 100%;
 	}
 }
 
