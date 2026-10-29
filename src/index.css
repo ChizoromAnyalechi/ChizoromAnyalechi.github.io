@@ -1,0 +1,337 @@
+@import "tailwindcss";
+
+/* Registered so the background tint can animate between tiles' colours. */
+@property --accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #3b6cff;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: #05070d;
+}
+
+body {
+  font-family: "Outfit", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.ps-root {
+  position: relative;
+  isolation: isolate;
+  min-height: 100dvh;
+  color: #fff;
+  transition: --accent 0.8s ease;
+}
+
+.gutter-x {
+  padding-inline: clamp(16px, 5vw, 72px);
+}
+
+.accent-text {
+  color: color-mix(in oklab, var(--accent) 65%, white);
+}
+
+.accent-dot {
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* ---------- Backdrop ---------- */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #05070d;
+  pointer-events: none;
+}
+
+.backdrop-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 55% at 78% 18%, color-mix(in oklab, var(--accent) 55%, transparent), transparent 70%),
+    radial-gradient(55% 45% at 8% 100%, color-mix(in oklab, var(--accent) 30%, transparent), transparent 75%);
+}
+
+.backdrop-art {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 72%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.08);
+  transition:
+    opacity 0.8s ease,
+    transform 7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 40%);
+  mask-image: linear-gradient(to right, transparent 0%, #000 40%);
+}
+
+.backdrop-art.is-active {
+  opacity: 0.85;
+  transform: scale(1);
+}
+
+.backdrop-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(5, 7, 13, 0.92) 0%, rgba(5, 7, 13, 0.7) 38%, rgba(5, 7, 13, 0.15) 75%, rgba(5, 7, 13, 0.3) 100%),
+    linear-gradient(0deg, rgba(5, 7, 13, 0.95) 0%, rgba(5, 7, 13, 0) 50%),
+    linear-gradient(180deg, rgba(5, 7, 13, 0.65) 0%, rgba(5, 7, 13, 0) 22%);
+}
+
+.backdrop-orbs {
+  position: absolute;
+  inset: 0;
+}
+
+.backdrop-orbs span {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--accent);
+  filter: blur(70px);
+  opacity: 0.18;
+  animation: drift 22s ease-in-out infinite alternate;
+}
+
+.backdrop-orbs span:nth-child(1) { width: 38vmax; height: 38vmax; left: -10vmax; top: 20%; }
+.backdrop-orbs span:nth-child(2) { width: 26vmax; height: 26vmax; right: 10%; bottom: -12vmax; opacity: 0.12; animation-duration: 28s; }
+.backdrop-orbs span:nth-child(3) { width: 18vmax; height: 18vmax; left: 40%; top: -8vmax; opacity: 0.1; animation-duration: 34s; }
+
+@keyframes drift {
+  to { transform: translate(6vmax, -4vmax) scale(1.15); }
+}
+
+/* ---------- Tile row ---------- */
+
+.tile-row {
+  height: 236px;
+  scrollbar-width: none;
+}
+
+.tile-row::-webkit-scrollbar {
+  display: none;
+}
+
+.tile-wrap {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  animation: tile-in 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+  animation-delay: calc(var(--i, 0) * 45ms);
+}
+
+.tile {
+  --size: 88px;
+  position: relative;
+  flex-shrink: 0;
+  width: var(--size);
+  height: var(--size);
+  overflow: hidden;
+  border-radius: 18px;
+  background: #121826;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition:
+    width 0.38s cubic-bezier(0.2, 0.8, 0.2, 1),
+    height 0.38s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.3s ease,
+    transform 0.15s ease;
+}
+
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75) saturate(0.85);
+  transition:
+    filter 0.3s ease,
+    transform 0.6s ease;
+}
+
+.tile:active {
+  transform: scale(0.96);
+}
+
+.tile-wrap.is-active .tile {
+  --size: 176px;
+  box-shadow:
+    0 0 0 3px #fff,
+    0 0 0 8px rgba(255, 255, 255, 0.14),
+    0 22px 46px rgba(0, 0, 0, 0.55),
+    0 0 70px -6px var(--tile-accent);
+}
+
+.tile-wrap.is-active .tile img {
+  filter: none;
+  transform: scale(1.04);
+}
+
+/* light sweep across the tile when it becomes selected */
+.tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.45) 50%, transparent 65%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+
+.tile-wrap.is-active .tile::after {
+  animation: shine 0.9s 0.1s ease forwards;
+}
+
+.tile-art {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  place-items: center;
+  color: #fff;
+  background: linear-gradient(140deg, var(--tile-accent), color-mix(in oklab, var(--tile-accent) 35%, #05070d));
+}
+
+.tile-art svg {
+  width: 38%;
+  height: 38%;
+}
+
+.tile-label {
+  max-width: 0;
+  margin-left: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 1.3rem;
+  font-weight: 600;
+  opacity: 0;
+  transition:
+    max-width 0.38s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.25s ease,
+    margin 0.38s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.tile-wrap.is-active .tile-label {
+  max-width: 300px;
+  margin-left: 20px;
+  margin-right: 12px;
+  opacity: 1;
+}
+
+@keyframes tile-in {
+  from { opacity: 0; transform: translateY(14px); }
+}
+
+@keyframes shine {
+  to { transform: translateX(120%); }
+}
+
+/* ---------- Hub ---------- */
+
+.hub-in {
+  animation: hub-in 0.55s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+@keyframes hub-in {
+  from { opacity: 0; transform: translateY(12px); }
+}
+
+.card-grid {
+  display: grid;
+  max-width: 72rem;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.ps-card {
+  display: block;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  transition:
+    transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.ps-card:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: color-mix(in oklab, var(--accent) 60%, transparent);
+}
+
+.kbd {
+  display: inline-grid;
+  min-width: 1.9em;
+  place-items: center;
+  padding: 0.1em 0.45em;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ---------- Sheet ---------- */
+
+.sheet-backdrop {
+  animation: fade 0.25s ease;
+}
+
+.sheet-panel {
+  animation: pop 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 768px) {
+  .backdrop-art {
+    width: 100%;
+    height: 62%;
+    -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+  }
+
+  .backdrop-shade {
+    background: linear-gradient(0deg, rgba(5, 7, 13, 1) 0%, rgba(5, 7, 13, 0.6) 55%, rgba(5, 7, 13, 0.45) 100%);
+  }
+}
+
+@media (max-width: 640px) {
+  .tile-row { height: 164px; }
+  .tile { --size: 64px; border-radius: 14px; }
+  .tile-wrap.is-active .tile { --size: 116px; }
+  .tile-label { font-size: 1.05rem; }
+  .tile-wrap.is-active .tile-label { max-width: 200px; margin-left: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
